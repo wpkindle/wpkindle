@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.gradient-button {
+  background: linear-gradient(-45deg, #16a34a, #089000, #0eff00, #1fc600);
+  background-size: 600%;
+  -webkit-animation: anime 6s linear infinite;
+  animation: anime 6s linear infinite;
+}
+
+@-webkit-keyframes anime {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes anime {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-button:hover {
+  animation: none;
+  background: #16a34a;
+}
