@@ -95,12 +95,12 @@ function Signup() {
             </button>
           </div>
           <div>
-            <h2 className="text-white">
+            <p className="text-white">
               Have an account?{" "}
               <Link className=" text-green-500 font-bold" to={"/login"}>
                 Login
               </Link>
-            </h2>
+            </p>
           </div>
         </div>
       </div>

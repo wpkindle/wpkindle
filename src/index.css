@@ -6,6 +6,21 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+h1 {
+  font-weight: bold;
+  font-size: 34px;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+ul {
+  list-style: disc;
+  margin-left: 19px;
+}
+
 .gradient-button {
   background: linear-gradient(-45deg, #16a34a, #089000, #0eff00, #1fc600);
   background-size: 600%;

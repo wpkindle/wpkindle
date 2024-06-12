@@ -78,18 +78,18 @@ function Login() {
           <div className=" flex justify-center mb-3">
             <button
               onClick={signin}
-              className=" bg-green-500 w-full text-black font-bold  px-2 py-2 rounded-lg"
+              className=" bg-green-500 w-full text-white font-bold  px-2 py-2 rounded-lg"
             >
               Login
             </button>
           </div>
           <div>
-            <h2 className="text-white">
+            <p className="text-white">
               Don't have an account?{" "}
               <Link className=" text-green-500 font-bold" to={"/signup"}>
                 Signup Now
               </Link>
-            </h2>
+            </p>
           </div>
         </div>
       </div>
