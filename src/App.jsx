@@ -18,6 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AddProduct from "./pages/admin/pages/AddProduct";
 import UpdateProduct from "./pages/admin/pages/UpdateProduct";
 import WP_Assets from "./pages/WP_Assets/WP_Assets";
+import Contact from "./pages/contact/Contact";
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
             }
           />
           <Route path="/wp-assets" element={<WP_Assets />} />
+          <Route path="/contact" element={<Contact />} />
 
           <Route path="/*" element={<NoPage />} />
         </Routes>
