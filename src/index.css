@@ -19,6 +19,8 @@ h2 {
 ul {
   list-style: disc;
   margin-left: 19px;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .gradient-button {

@@ -7,6 +7,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { addToCart } from "../../redux/cartSlice";
 import { fireDB } from "../../firebase/FirebaseConfig";
+import { Link } from "react-router-dom";
 
 function ProductInfo() {
   const context = useContext(myContext);
@@ -53,15 +54,18 @@ function ProductInfo() {
       <section className="text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-10 mx-auto">
           {products && (
-            <div className="lg:w-4/5 mx-auto flex flex-wrap">
+            <div className="mx-auto flex flex-wrap">
               <img
                 alt="ecommerce"
-                className="lg:w-1/2 w-full lg:h-auto  object-cover object-center rounded"
+                className="lg:w-1/3 object-contain"
                 src={products.imageUrl}
               />
-              <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+              <div className="lg:w-2/3 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                 <h2 className="text-sm title-font text-gray-500 tracking-widest">
-                  {products.category}
+                  Category:{" "}
+                  <Link to={"/"}>
+                    <span className="text-green-600">{products.category}</span>
+                  </Link>
                 </h2>
                 <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
                   {products.title}
