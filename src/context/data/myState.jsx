@@ -36,6 +36,7 @@ function myState(props) {
     imageUrl: null,
     category: null,
     description: null,
+    details: null,
     time: Timestamp.now(),
     date: new Date().toLocaleString("en-US", {
       month: "short",
@@ -50,7 +51,8 @@ function myState(props) {
       products.price == null ||
       products.imageUrl == null ||
       products.category == null ||
-      products.description == null
+      products.description == null ||
+      products.details == null
     ) {
       return toast.error("all fields are required");
     }

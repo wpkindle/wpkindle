@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import myContext from "../../../context/data/myContext";
+import "react-quill/dist/quill.snow.css";
+import ReactQuill from "react-quill";
 
 function UpdateProduct() {
   const context = useContext(myContext);
@@ -62,17 +64,24 @@ function UpdateProduct() {
             />
           </div>
           <div>
-            <textarea
-              cols="30"
-              rows="10"
-              name="title"
+            <ReactQuill
+              theme="snow"
               value={products.description}
-              onChange={(e) =>
-                setProducts({ ...products, description: e.target.value })
+              onChange={(editor) =>
+                setProducts({ ...products, description: editor.getHTML() })
               }
-              className=" bg-gray-600 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-200 outline-none"
-              placeholder="Product desc"
-            ></textarea>
+              className="bg-gray-600 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-200 outline-none"
+            />
+          </div>
+          <div>
+            <ReactQuill
+              theme="snow"
+              value={products.details}
+              onChange={(content, delta, source, editor) =>
+                setProducts({ ...products, details: editor.getHTML() })
+              }
+              className="bg-gray-600 mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg text-white placeholder:text-gray-200 outline-none"
+            />
           </div>
           <div className=" flex justify-center mb-3">
             <button

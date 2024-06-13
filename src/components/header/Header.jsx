@@ -105,7 +105,8 @@ function Header() {
                       ""
                     )}
 
-                    {user?.user?.email === "knupadhyay784@gmail.com" ? (
+                    {user?.user?.email ===
+                    "abdulkhaliqwebdeveloper@gmail.com" ? (
                       <div className="flow-root">
                         <Link
                           to={"/dashboard"}
@@ -225,7 +226,8 @@ function Header() {
                       </Link>
                     )}
 
-                    {user?.user?.email === "knupadhyay784@gmail.com" ? (
+                    {user?.user?.email ===
+                    "abdulkhaliqwebdeveloper@gmail.com" ? (
                       <Link
                         to={"/dashboard"}
                         className="text-sm font-medium text-gray-700 "

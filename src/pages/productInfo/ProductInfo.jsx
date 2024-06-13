@@ -10,7 +10,7 @@ import { fireDB } from "../../firebase/FirebaseConfig";
 
 function ProductInfo() {
   const context = useContext(myContext);
-  const { loading, setLoading } = context;
+  const { setLoading } = context;
 
   const [products, setProducts] = useState("");
   const params = useParams();
@@ -56,7 +56,7 @@ function ProductInfo() {
             <div className="lg:w-4/5 mx-auto flex flex-wrap">
               <img
                 alt="ecommerce"
-                className="lg:w-1/3 w-full lg:h-auto  object-cover object-center rounded"
+                className="lg:w-1/2 w-full lg:h-auto  object-cover object-center rounded"
                 src={products.imageUrl}
               />
               <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
@@ -66,15 +66,16 @@ function ProductInfo() {
                 <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
                   {products.title}
                 </h1>
-                <p className="leading-relaxed border-b-2 mb-5 pb-5">
+                <div className="leading-relaxed border-b-2 mb-5 pb-5">
                   <div
                     dangerouslySetInnerHTML={{ __html: products.description }}
                   ></div>
-                </p>
+                  <div className="leading-relaxed"></div>
+                </div>
 
                 <div className="flex">
                   <span className="title-font font-medium text-2xl text-gray-900">
-                    ₹{products.price}
+                    ${products.price}
                   </span>
                   <button
                     onClick={() => addCart(products)}
@@ -95,6 +96,13 @@ function ProductInfo() {
                     </svg>
                   </button>
                 </div>
+              </div>
+              <div className="w-full">
+                <h2>Asset Details</h2>
+                <div
+                  className="w-full"
+                  dangerouslySetInnerHTML={{ __html: products.details }}
+                />
               </div>
             </div>
           )}

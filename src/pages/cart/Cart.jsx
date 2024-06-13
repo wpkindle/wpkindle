@@ -168,7 +168,7 @@ function Cart() {
                         className="mt-1 text-xs font-semibold text-gray-700"
                         style={{ color: mode === "dark" ? "white" : "" }}
                       >
-                        ₹{price}
+                        ${price}
                       </p>
                     </div>
                     <div
