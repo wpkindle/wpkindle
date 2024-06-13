@@ -23,7 +23,7 @@ function Contact() {
       import.meta.env.VITE_REACT_APP_SERVICE_ID,
       import.meta.env.VITE_REACT_APP_TEMPLATE_ID,
       formData,
-      import.meta.env.VITE_REACT_APP_PUBLIC_ID
+      import.meta.env.VITE_REACT_APP_PUBLIC_KEY
     )
       .then((response) => {
         console.log("SUCCESS!", response.status, response.text);
