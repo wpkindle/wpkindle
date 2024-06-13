@@ -62,7 +62,7 @@ function ProductInfo() {
               />
               <div className="lg:w-2/3 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                 <h2 className="text-sm title-font text-gray-500 tracking-widest">
-                  Category:{" "}
+                  Category:
                   <Link to={"/"}>
                     <span className="text-green-600">{products.category}</span>
                   </Link>
