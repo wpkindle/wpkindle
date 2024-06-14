@@ -62,7 +62,7 @@ function WP_Assets() {
                   return (
                     <div
                       onClick={() =>
-                        (window.location.href = `/productinfo/${id}`)
+                        (window.location.href = `/wp-assets/${id}`)
                       }
                       key={index}
                       className="p-4 md:w-1/4  drop-shadow-lg "

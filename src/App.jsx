@@ -10,7 +10,7 @@ import Order from "./pages/order/Order";
 import NoPage from "./pages/nopage/NoPage";
 import Cart from "./pages/cart/Cart";
 import Dashboard from "./pages/admin/dashboard/Dashboard";
-import ProductInfo from "./pages/productInfo/ProductInfo";
+import ProductInfo from "./pages/wp-assets/ProductInfo";
 import Login from "./pages/registration/Login";
 import Signup from "./pages/registration/Signup";
 import { ToastContainer } from "react-toastify";
@@ -43,7 +43,7 @@ function App() {
               </ProtectedRoutesForAdmin>
             }
           />
-          <Route path="/productinfo/:id" element={<ProductInfo />} />
+          <Route path="/wp-assets/:id" element={<ProductInfo />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route
