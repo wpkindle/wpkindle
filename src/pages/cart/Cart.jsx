@@ -7,6 +7,7 @@ import { deleteFromCart } from "../../redux/cartSlice";
 import { toast } from "react-toastify";
 import { addDoc, collection } from "firebase/firestore";
 import { fireDB } from "../../firebase/FirebaseConfig";
+import axios from "axios";
 
 function Cart() {
   const context = useContext(myContext);
@@ -19,34 +20,25 @@ function Cart() {
 
   const deleteCart = (item) => {
     dispatch(deleteFromCart(item));
-    toast.success("Delete cart");
+    toast.success("Deleted from cart");
   };
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const [totalAmout, setTotalAmount] = useState(0);
+  const [totalAmount, setTotalAmount] = useState(0);
 
   useEffect(() => {
     let temp = 0;
     cartItems.forEach((cartItem) => {
-      temp = temp + parseInt(cartItem.price);
+      temp += parseInt(cartItem.price);
     });
     setTotalAmount(temp);
     console.log(temp);
   }, [cartItems]);
 
-  //   const shipping = parseInt(100);
-
-  //   const grandTotal = shipping + totalAmout;
-  const grandTotal = totalAmout;
-
-  // console.log(grandTotal)
-
-  /**========================================================================
-   *!                           Payment Intigration
-   *========================================================================**/
+  const grandTotal = totalAmount;
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -54,7 +46,7 @@ function Cart() {
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const buyNow = async () => {
-    if (name === "" || address == "" || pincode == "" || phoneNumber == "") {
+    if (name === "" || address === "" || pincode === "" || phoneNumber === "") {
       return toast.error("All fields are required", {
         position: "top-center",
         autoClose: 1000,
@@ -79,67 +71,117 @@ function Cart() {
       }),
     };
 
-    var options = {
-      key: "asldfja893q8844wejfafja",
-      key_secret: "fajdlkfjj5j549345jfadsfa",
-      amount: parseInt(grandTotal),
-      currency: "INR",
-      order_receipt: "order_rcptid_" + name,
-      name: "E-Bharat",
-      description: "for testing purpose",
-      handler: function (response) {
-        console.log(response);
-        toast.success("Payment Successful");
-
-        const paymentId = response.razorpay_payment_id;
-
-        const orderInfo = {
-          cartItems,
-          addressInfo,
-          date: new Date().toLocaleString("en-US", {
-            month: "short",
-            day: "2-digit",
-            year: "numeric",
-          }),
-          email: JSON.parse(localStorage.getItem("user")).user.email,
-          userid: JSON.parse(localStorage.getItem("user")).user.uid,
-          paymentId,
-        };
-
-        try {
-          const orderRef = collection(fireDB, "order");
-          addDoc(orderRef, orderInfo);
-        } catch (error) {
-          console.log(error);
+    try {
+      // Step 1: Authentication to get a token
+      const authResponse = await axios.post(
+        "https://accept.paymob.com/api/auth/tokens",
+        {
+          api_key:
+            "ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TlRFMk9UTXNJbTVoYldVaU9pSXhOamd4T1RrMU5UTTBMakV3TlRZeE5TSjkub2JiN3Z0SDc0LTBCajFoSGJLaVp2S2Y0OXdpYWN0dDU3VndRY3BSbTBlTm9ua0NaMXZpZURld2VZaDM3MzFoZHFiUkFvanlwSzF6Zjc0VEFiWHZFaXc=",
         }
-      },
+      );
+      const token = authResponse.data.token;
 
-      theme: {
-        color: "#3399cc",
-      },
-    };
+      // Step 2: Create an order
+      const orderResponse = await axios.post(
+        "https://accept.paymob.com/api/ecommerce/orders",
+        {
+          auth_token: token,
+          delivery_needed: "false",
+          amount_cents: grandTotal,
+          currency: "EGP",
+          items: cartItems.map((item) => ({
+            name: item.title,
+            amount_cents: item.price,
+            quantity: 1,
+          })),
+        }
+      );
 
-    var pay = new window.Razorpay(options);
-    pay.open();
-    console.log(pay);
+      const { id: orderId } = orderResponse.data;
+
+      // Step 3: Get payment token
+      const paymentKeyResponse = await axios.post(
+        "https://accept.paymob.com/api/acceptance/payment_keys",
+        {
+          auth_token: token,
+          amount_cents: grandTotal,
+          expiration: 3600,
+          order_id: orderId,
+          billing_data: {
+            first_name: name,
+            last_name: name,
+            address: address,
+            phone_number: phoneNumber,
+            email: JSON.parse(localStorage.getItem("user")).user.email,
+          },
+          currency: "EGP",
+          integration_id: import.meta.env.VITE_REACT_APP_PAYMOB_INTEGRATION_ID, // Replace with your actual integration ID
+        }
+      );
+
+      const { token: paymentKey } = paymentKeyResponse.data;
+
+      // Step 4: Open payment page
+      const payResponse = await axios.post(
+        "https://accept.paymob.com/api/acceptance/payments/pay",
+        {
+          source: {
+            identifier: "card", // Example for card payment
+            subtype: "CARD",
+          },
+          payment_token: paymentKey,
+        }
+      );
+
+      const paymentId = payResponse.data.id;
+
+      toast.success("Payment Successful");
+
+      const orderInfo = {
+        cartItems,
+        addressInfo,
+        date: new Date().toLocaleString("en-US", {
+          month: "short",
+          day: "2-digit",
+          year: "numeric",
+        }),
+        email: JSON.parse(localStorage.getItem("user")).user.email,
+        userid: JSON.parse(localStorage.getItem("user")).user.uid,
+        paymentId,
+      };
+
+      try {
+        const orderRef = collection(fireDB, "order");
+        await addDoc(orderRef, orderInfo);
+      } catch (error) {
+        console.log(error);
+        toast.error("Failed to save order in database");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Payment failed");
+    }
   };
+
   return (
     <Layout>
       <div
-        className="h-screen bg-gray-100 pt-5 mb-[60%] "
+        className="h-screen bg-gray-100 pt-5 mb-[60%]"
         style={{
           backgroundColor: mode === "dark" ? "#282c34" : "",
           color: mode === "dark" ? "white" : "",
         }}
       >
         <h1 className="mb-10 text-center text-2xl font-bold">Cart Items</h1>
-        <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0 ">
-          <div className="rounded-lg md:w-2/3 ">
+        <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
+          <div className="rounded-lg md:w-2/3">
             {cartItems.map((item, index) => {
               const { title, price, description, imageUrl } = item;
               return (
                 <div
-                  className="justify-between mb-6 rounded-lg border  drop-shadow-xl bg-white p-6  sm:flex  sm:justify-start"
+                  key={index}
+                  className="justify-between mb-6 rounded-lg border drop-shadow-xl bg-white p-6 sm:flex sm:justify-start"
                   style={{
                     backgroundColor: mode === "dark" ? "rgb(32 33 34)" : "",
                     color: mode === "dark" ? "white" : "",
@@ -159,7 +201,7 @@ function Cart() {
                         {title}
                       </h2>
                       <h2
-                        className="text-sm  text-gray-900"
+                        className="text-sm text-gray-900"
                         style={{ color: mode === "dark" ? "white" : "" }}
                       >
                         {description}
@@ -168,7 +210,7 @@ function Cart() {
                         className="mt-1 text-xs font-semibold text-gray-700"
                         style={{ color: mode === "dark" ? "white" : "" }}
                       >
-                        ${price}
+                        ₹{price}
                       </p>
                     </div>
                     <div
@@ -214,23 +256,9 @@ function Cart() {
                 className="text-gray-700"
                 style={{ color: mode === "dark" ? "white" : "" }}
               >
-                ₹{totalAmout}
+                ₹{totalAmount}
               </p>
             </div>
-            {/* <div className="flex justify-between">
-              <p
-                className="text-gray-700"
-                style={{ color: mode === "dark" ? "white" : "" }}
-              >
-                Shipping
-              </p>
-              <p
-                className="text-gray-700"
-                style={{ color: mode === "dark" ? "white" : "" }}
-              >
-                ₹{shipping}
-              </p>
-            </div> */}
             <hr className="my-4" />
             <div className="flex justify-between mb-3">
               <p
@@ -239,7 +267,7 @@ function Cart() {
               >
                 Total
               </p>
-              <div className>
+              <div>
                 <p
                   className="mb-1 text-lg font-bold"
                   style={{ color: mode === "dark" ? "white" : "" }}
@@ -248,7 +276,6 @@ function Cart() {
                 </p>
               </div>
             </div>
-            {/* <Modal  /> */}
             <Modal
               name={name}
               address={address}

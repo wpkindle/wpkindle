@@ -22,14 +22,13 @@ export default function Modal({
     setIsOpen(true);
   }
 
-  // console.log(name,address,pincode,phoneNumber)
   return (
     <>
       <div className="  text-center rounded-lg text-white font-bold">
         <button
           type="button"
           onClick={openModal}
-          className="w-full  bg-violet-600 py-2 text-center rounded-lg text-white font-bold"
+          className="w-full  bg-violet-600 py-2 text-center rounded-lg text-white font-bold "
         >
           Buy Now
         </button>
@@ -37,7 +36,7 @@ export default function Modal({
 
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
-          <Transition
+          <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
             enterFrom="opacity-0"
@@ -47,11 +46,11 @@ export default function Modal({
             leaveTo="opacity-0"
           >
             <div className="fixed inset-0 bg-black bg-opacity-25" />
-          </Transition>
+          </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
             <div className="flex min-h-full items-center justify-center p-4 text-center">
-              <Transition
+              <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
                 enterFrom="opacity-0 scale-95"
@@ -60,13 +59,9 @@ export default function Modal({
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog className="w-full max-w-md transform overflow-hidden rounded-2xl p-2  text-left align-middle shadow-xl transition-all bg-gray-50">
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl p-2  text-left align-middle shadow-xl transition-all bg-gray-50">
                   <section className="">
                     <div className="flex flex-col items-center justify-center py-8 mx-auto  lg:py-0">
-                      {/* <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-                                                <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
-                                                Flowbite
-                                            </a> */}
                       <div className="w-full  rounded-lg md:mt-0 sm:max-w-md xl:p-0 ">
                         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                           <form className="space-y-4 md:space-y-6" action="#">
@@ -153,8 +148,8 @@ export default function Modal({
                       </div>
                     </div>
                   </section>
-                </Dialog>
-              </Transition>
+                </Dialog.Panel>
+              </Transition.Child>
             </div>
           </div>
         </Dialog>
