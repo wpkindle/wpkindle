@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { addDoc, collection } from "firebase/firestore";
 import { fireDB } from "../../firebase/FirebaseConfig";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Cart() {
   const context = useContext(myContext);
@@ -76,8 +77,7 @@ function Cart() {
       const authResponse = await axios.post(
         "https://accept.paymob.com/api/auth/tokens",
         {
-          api_key:
-            "ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TlRFMk9UTXNJbTVoYldVaU9pSXhOamd4T1RrMU5UTTBMakV3TlRZeE5TSjkub2JiN3Z0SDc0LTBCajFoSGJLaVp2S2Y0OXdpYWN0dDU3VndRY3BSbTBlTm9ua0NaMXZpZURld2VZaDM3MzFoZHFiUkFvanlwSzF6Zjc0VEFiWHZFaXc=",
+          api_key: import.meta.env.VITE_REACT_APP_PAYMOB_API,
         }
       );
       const token = authResponse.data.token;
@@ -177,7 +177,7 @@ function Cart() {
         <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
           <div className="rounded-lg md:w-2/3">
             {cartItems.map((item, index) => {
-              const { title, price, description, imageUrl } = item;
+              const { category, title, price, imageUrl } = item;
               return (
                 <div
                   key={index}
@@ -190,27 +190,28 @@ function Cart() {
                   <img
                     src={imageUrl}
                     alt="product-image"
-                    className="w-full rounded-lg sm:w-40"
+                    className="w-full rounded-lg sm:w-20"
                   />
                   <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                     <div className="mt-5 sm:mt-0">
+                      <Link
+                        to={"/"}
+                        className="text-green-600 text-sm"
+                        style={{ color: mode === "dark" ? "white" : "" }}
+                      >
+                        Category: {category}
+                      </Link>
                       <h2
                         className="text-lg font-bold text-gray-900"
                         style={{ color: mode === "dark" ? "white" : "" }}
                       >
                         {title}
                       </h2>
-                      <h2
-                        className="text-sm text-gray-900"
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        {description}
-                      </h2>
                       <p
                         className="mt-1 text-xs font-semibold text-gray-700"
                         style={{ color: mode === "dark" ? "white" : "" }}
                       >
-                        ₹{price}
+                        Price: ${price}
                       </p>
                     </div>
                     <div
@@ -256,7 +257,7 @@ function Cart() {
                 className="text-gray-700"
                 style={{ color: mode === "dark" ? "white" : "" }}
               >
-                ₹{totalAmount}
+                ${totalAmount}
               </p>
             </div>
             <hr className="my-4" />
@@ -272,7 +273,7 @@ function Cart() {
                   className="mb-1 text-lg font-bold"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
-                  ₹{grandTotal}
+                  ${grandTotal}
                 </p>
               </div>
             </div>
