@@ -16,18 +16,6 @@ import { toast } from "react-toastify";
 import { fireDB } from "../../firebase/FirebaseConfig";
 
 function myState(props) {
-  const [mode, setMode] = useState("light");
-
-  const toggleMode = () => {
-    if (mode === "light") {
-      setMode("dark");
-      document.body.style.backgroundColor = "rgb(17, 24, 39)";
-    } else {
-      setMode("light");
-      document.body.style.backgroundColor = "white";
-    }
-  };
-
   const [loading, setLoading] = useState(false);
 
   const [products, setProducts] = useState({
@@ -192,8 +180,6 @@ function myState(props) {
   return (
     <MyContext.Provider
       value={{
-        mode,
-        toggleMode,
         loading,
         setLoading,
         products,

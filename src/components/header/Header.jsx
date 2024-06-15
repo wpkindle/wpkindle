@@ -10,7 +10,6 @@ import { ImWordpress } from "react-icons/im";
 
 function Header() {
   const context = useContext(myContext);
-  const { mode, toggleMode } = context;
 
   const [open, setOpen] = useState(false);
 
@@ -27,13 +26,7 @@ function Header() {
 
   return (
     <>
-      <p
-        className="flex h-10 items-center justify-center bg-green-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8"
-        style={{
-          backgroundColor: mode === "dark" ? "rgb(62 64 66)" : "",
-          color: mode === "dark" ? "white" : "",
-        }}
-      >
+      <p className="flex h-10 items-center justify-center bg-green-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
         The Name of Trust & Professionalism
       </p>
       <div className="bg-white sticky top-0 z-50">
@@ -65,13 +58,7 @@ function Header() {
                 leaveFrom="translate-x-0"
                 leaveTo="-translate-x-full"
               >
-                <Dialog
-                  className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl"
-                  style={{
-                    backgroundColor: mode === "dark" ? "rgb(40, 44, 52)" : "",
-                    color: mode === "dark" ? "white" : "",
-                  }}
-                >
+                <Dialog className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
                   <div className="flex px-4 pb-2 pt-28">
                     <button
                       type="button"
@@ -86,7 +73,6 @@ function Header() {
                     <Link
                       to={"/wp-assets"}
                       className="gradient-button py-2 px-3 rounded-md font-bold text-white flex items-center gap-1 text-lg"
-                      style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       <ImWordpress /> WP Assets
                     </Link>
@@ -95,7 +81,6 @@ function Header() {
                       <div className="flow-root">
                         <Link
                           to={"/order"}
-                          style={{ color: mode === "dark" ? "white" : "" }}
                           className="-m-2 block p-2 font-medium text-gray-900"
                         >
                           Order
@@ -111,7 +96,6 @@ function Header() {
                         <Link
                           to={"/dashboard"}
                           className="-m-2 block p-2 font-medium text-gray-900"
-                          style={{ color: mode === "dark" ? "white" : "" }}
                         >
                           admin
                         </Link>
@@ -125,7 +109,6 @@ function Header() {
                         <a
                           onClick={logout}
                           className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer"
-                          style={{ color: mode === "dark" ? "white" : "" }}
                         >
                           Logout
                         </a>
@@ -135,7 +118,6 @@ function Header() {
                         <Link
                           to={"/login"}
                           className="-m-2 block p-2 text-lg font-medium text-gray-900 cursor-pointer"
-                          style={{ color: mode === "dark" ? "white" : "" }}
                         >
                           Login
                         </Link>
@@ -152,10 +134,6 @@ function Header() {
           <nav
             aria-label="Top"
             className="bg-gray-100 px-4 sm:px-6 lg:px-8 shadow-xl "
-            style={{
-              backgroundColor: mode === "dark" ? "#282c34" : "",
-              color: mode === "dark" ? "white" : "",
-            }}
           >
             <div className="">
               <div className="flex h-16 items-center">
@@ -163,10 +141,6 @@ function Header() {
                   type="button"
                   className="rounded-md bg-white p-2 text-gray-400 lg:hidden"
                   onClick={() => setOpen(true)}
-                  style={{
-                    backgroundColor: mode === "dark" ? "rgb(80 82 87)" : "",
-                    color: mode === "dark" ? "white" : "",
-                  }}
                 >
                   <span className="sr-only">Open menu</span>
                   <svg
@@ -189,10 +163,7 @@ function Header() {
                 <div className="ml-4 flex lg:ml-0">
                   <Link to={"/"} className="flex">
                     <div className="flex ">
-                      <h1
-                        className=" text-2xl font-bold text-black  px-2 py-1 rounded"
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
+                      <h1 className=" text-2xl font-bold text-black  px-2 py-1 rounded">
                         WP Kindle
                       </h1>
                     </div>
@@ -204,7 +175,6 @@ function Header() {
                     <Link
                       to={"/wp-assets"}
                       className="gradient-button py-2 px-3 rounded-md font-bold text-white flex items-center gap-1 text-lg"
-                      style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       <ImWordpress /> WP Assets
                     </Link>
@@ -212,7 +182,6 @@ function Header() {
                       <Link
                         to={"/order"}
                         className="text-sm font-medium text-gray-700 "
-                        style={{ color: mode === "dark" ? "white" : "" }}
                       >
                         Order
                       </Link>
@@ -220,7 +189,6 @@ function Header() {
                       <Link
                         to={"/login"}
                         className="text-lg font-medium text-gray-700 "
-                        style={{ color: mode === "dark" ? "white" : "" }}
                       >
                         Login
                       </Link>
@@ -231,7 +199,6 @@ function Header() {
                       <Link
                         to={"/dashboard"}
                         className="text-sm font-medium text-gray-700 "
-                        style={{ color: mode === "dark" ? "white" : "" }}
                       >
                         Admin
                       </Link>
@@ -243,7 +210,6 @@ function Header() {
                       <a
                         onClick={logout}
                         className="text-sm font-medium text-gray-700 cursor-pointer  "
-                        style={{ color: mode === "dark" ? "white" : "" }}
                       >
                         Logout
                       </a>
@@ -252,24 +218,11 @@ function Header() {
                     )}
                   </div>
 
-                  <div className="flex lg:ml-6">
-                    <button className="" onClick={toggleMode}>
-                      {mode === "light" ? (
-                        <FiSun className="" size={30} />
-                      ) : "dark" ? (
-                        <BsFillCloudSunFill size={30} />
-                      ) : (
-                        ""
-                      )}
-                    </button>
-                  </div>
-
                   {/* Cart */}
                   <div className="ml-4 flow-root lg:ml-6">
                     <Link
                       to={"/cart"}
                       className="group -m-2 flex items-center p-2"
-                      style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -286,10 +239,7 @@ function Header() {
                         />
                       </svg>
 
-                      <span
-                        className="ml-2 text-sm font-medium text-gray-700 group-"
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
+                      <span className="ml-2 text-sm font-medium text-gray-700 group-">
                         {cartItems.length}
                       </span>
                       <span className="sr-only">items in cart, view bag</span>
