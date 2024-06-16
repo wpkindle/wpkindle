@@ -4,11 +4,11 @@ import { Fragment, useState } from "react";
 export default function Modal({
   name,
   address,
-  pincode,
+  email,
   phoneNumber,
   setName,
   setAddress,
-  setPincode,
+  setEmail,
   setPhoneNumber,
   buyNow,
 }) {
@@ -28,7 +28,7 @@ export default function Modal({
         <button
           type="button"
           onClick={openModal}
-          className="w-full  bg-violet-600 py-2 text-center rounded-lg text-white font-bold "
+          className="w-full  bg-green-600 py-2 text-center rounded-lg text-white font-bold "
         >
           Buy Now
         </button>
@@ -49,7 +49,7 @@ export default function Modal({
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-4 text-center">
+            <div className="mt-16 flex min-h-full items-center justify-center p-4 text-center">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -101,17 +101,17 @@ export default function Modal({
                             </div>
                             <div>
                               <label
-                                htmlFor="pincode"
+                                htmlFor="email"
                                 className="block mb-2 text-sm font-medium text-gray-900"
                               >
-                                Enter Pincode
+                                Enter Email
                               </label>
                               <input
-                                value={pincode}
-                                onChange={(e) => setPincode(e.target.value)}
-                                type="text"
-                                name="pincode"
-                                id="pincode"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                type="email"
+                                name="email"
+                                id="email"
                                 className=" border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
                                 required
                               />
@@ -140,7 +140,7 @@ export default function Modal({
                               closeModal();
                             }}
                             type="button"
-                            className="focus:outline-none w-full text-white bg-violet-600 hover:bg-violet-800  outline-0 font-medium rounded-lg text-sm px-5 py-2.5 "
+                            className="focus:outline-none w-full text-white bg-green-600 hover:bg-green-800  outline-0 font-medium rounded-lg text-sm px-5 py-2.5 "
                           >
                             Order Now
                           </button>
