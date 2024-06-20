@@ -71,7 +71,7 @@ function Cart() {
     try {
       // Step 1: Authentication to get a token
       const authResponse = await axios.post(
-        "https://accept.paymob.com/api/auth/tokens",
+        "https://pakistan.paymob.com/api/auth/tokens",
         {
           api_key: import.meta.env.VITE_REACT_APP_PAYMOB_API,
         }
@@ -80,12 +80,12 @@ function Cart() {
 
       // Step 2: Create an order
       const orderResponse = await axios.post(
-        "https://accept.paymob.com/api/ecommerce/orders",
+        "https://pakistan.paymob.com/api/ecommerce/orders",
         {
           auth_token: token,
           delivery_needed: "false",
           amount_cents: grandTotal,
-          currency: "EGP",
+          currency: "USD",
           items: cartItems.map((item) => ({
             name: item.title,
             amount_cents: item.price,
@@ -98,7 +98,7 @@ function Cart() {
 
       // Step 3: Get payment token
       const paymentKeyResponse = await axios.post(
-        "https://accept.paymob.com/api/acceptance/payment_keys",
+        "https://pakistan.paymob.com/api/acceptance/payment_keys",
         {
           auth_token: token,
           amount_cents: grandTotal,
@@ -112,7 +112,7 @@ function Cart() {
             email: JSON.parse(localStorage.getItem("user")).user.email,
           },
           currency: "USD",
-          integration_id: import.meta.env.VITE_REACT_APP_PAYMOB_INTEGRATION_ID, // Replace with your actual integration ID
+          integration_id: import.meta.env.VITE_REACT_APP_PAYMOB_INTEGRATION_ID,
         }
       );
 
