@@ -6,10 +6,22 @@ export default function Modal({
   address,
   email,
   phoneNumber,
+  street,
+  building,
+  floor,
+  apartment,
+  city,
+  country,
   setName,
   setAddress,
   setEmail,
   setPhoneNumber,
+  setStreet,
+  setBuilding,
+  setFloor,
+  setApartment,
+  setCity,
+  setCountry,
   buyNow,
 }) {
   let [isOpen, setIsOpen] = useState(false);
@@ -24,11 +36,11 @@ export default function Modal({
 
   return (
     <>
-      <div className="  text-center rounded-lg text-white font-bold">
+      <div className="text-center rounded-lg text-white font-bold">
         <button
           type="button"
           onClick={openModal}
-          className="w-full  bg-green-600 hover:bg-green-800 py-2 text-center rounded-lg text-white font-bold "
+          className="w-full bg-green-600 hover:bg-green-800 py-2 text-center rounded-lg text-white font-bold"
         >
           Buy Now
         </button>
@@ -59,10 +71,10 @@ export default function Modal({
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl p-2  text-left align-middle shadow-xl transition-all bg-gray-50">
-                  <section className="">
-                    <div className="flex flex-col items-center justify-center py-8 mx-auto  lg:py-0">
-                      <div className="w-full  rounded-lg md:mt-0 sm:max-w-md xl:p-0 ">
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl p-2 text-left align-middle shadow-xl transition-all bg-gray-50">
+                  <section>
+                    <div className="flex flex-col items-center justify-center py-8 mx-auto lg:py-0">
+                      <div className="w-full rounded-lg md:mt-0 sm:max-w-md xl:p-0">
                         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                           <form className="space-y-4 md:space-y-6" action="#">
                             <div>
@@ -75,16 +87,16 @@ export default function Modal({
                               <input
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                type="name"
+                                type="text"
                                 name="name"
                                 id="name"
-                                className=" border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
+                                className="border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
                                 required
                               />
                             </div>
                             <div>
                               <label
-                                htmlFor="email"
+                                htmlFor="address"
                                 className="block mb-2 text-sm font-medium text-gray-900"
                               >
                                 Enter Full Address
@@ -95,7 +107,109 @@ export default function Modal({
                                 type="text"
                                 name="address"
                                 id="address"
-                                className=" border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
+                                className="border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
+                                required
+                              />
+                            </div>
+                            <div>
+                              <label
+                                htmlFor="street"
+                                className="block mb-2 text-sm font-medium text-gray-900"
+                              >
+                                Enter Street
+                              </label>
+                              <input
+                                value={street}
+                                onChange={(e) => setStreet(e.target.value)}
+                                type="text"
+                                name="street"
+                                id="street"
+                                className="border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
+                                required
+                              />
+                            </div>
+                            <div>
+                              <label
+                                htmlFor="building"
+                                className="block mb-2 text-sm font-medium text-gray-900"
+                              >
+                                Enter Building
+                              </label>
+                              <input
+                                value={building}
+                                onChange={(e) => setBuilding(e.target.value)}
+                                type="text"
+                                name="building"
+                                id="building"
+                                className="border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
+                                required
+                              />
+                            </div>
+                            <div>
+                              <label
+                                htmlFor="floor"
+                                className="block mb-2 text-sm font-medium text-gray-900"
+                              >
+                                Enter Floor
+                              </label>
+                              <input
+                                value={floor}
+                                onChange={(e) => setFloor(e.target.value)}
+                                type="text"
+                                name="floor"
+                                id="floor"
+                                className="border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
+                                required
+                              />
+                            </div>
+                            <div>
+                              <label
+                                htmlFor="apartment"
+                                className="block mb-2 text-sm font-medium text-gray-900"
+                              >
+                                Enter Apartment
+                              </label>
+                              <input
+                                value={apartment}
+                                onChange={(e) => setApartment(e.target.value)}
+                                type="text"
+                                name="apartment"
+                                id="apartment"
+                                className="border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
+                                required
+                              />
+                            </div>
+                            <div>
+                              <label
+                                htmlFor="city"
+                                className="block mb-2 text-sm font-medium text-gray-900"
+                              >
+                                Enter City
+                              </label>
+                              <input
+                                value={city}
+                                onChange={(e) => setCity(e.target.value)}
+                                type="text"
+                                name="city"
+                                id="city"
+                                className="border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
+                                required
+                              />
+                            </div>
+                            <div>
+                              <label
+                                htmlFor="country"
+                                className="block mb-2 text-sm font-medium text-gray-900"
+                              >
+                                Enter Country
+                              </label>
+                              <input
+                                value={country}
+                                onChange={(e) => setCountry(e.target.value)}
+                                type="text"
+                                name="country"
+                                id="country"
+                                className="border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
                                 required
                               />
                             </div>
@@ -109,41 +223,38 @@ export default function Modal({
                               <input
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                type="email"
+                                type="text"
                                 name="email"
                                 id="email"
-                                className=" border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
+                                className="border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
                                 required
                               />
                             </div>
                             <div>
                               <label
-                                htmlFor="mobileNumber"
+                                htmlFor="phoneNumber"
                                 className="block mb-2 text-sm font-medium text-gray-900"
                               >
-                                Enter Mobile Number
+                                Enter Phone Number
                               </label>
                               <input
                                 value={phoneNumber}
                                 onChange={(e) => setPhoneNumber(e.target.value)}
                                 type="text"
-                                name="mobileNumber"
-                                id="mobileNumber"
-                                className=" border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
+                                name="phoneNumber"
+                                id="phoneNumber"
+                                className="border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
                                 required
                               />
                             </div>
+                            <button
+                              type="submit"
+                              onClick={buyNow}
+                              className="w-full text-white bg-green-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                            >
+                              Checkout
+                            </button>
                           </form>
-                          <button
-                            onClick={() => {
-                              buyNow();
-                              closeModal();
-                            }}
-                            type="button"
-                            className="focus:outline-none w-full text-white bg-green-600 hover:bg-green-800  outline-0 font-medium rounded-lg text-sm px-5 py-2.5 "
-                          >
-                            Order Now
-                          </button>
                         </div>
                       </div>
                     </div>
