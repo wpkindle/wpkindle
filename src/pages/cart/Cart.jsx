@@ -120,7 +120,7 @@ function Cart() {
 
       // Step 4: Open payment page
       const payResponse = await axios.post(
-        "https://accept.paymob.com/api/acceptance/payments/pay",
+        "https://pakistan.paymob.com/api/acceptance/post_pay",
         {
           source: {
             identifier: "card", // Example for card payment
