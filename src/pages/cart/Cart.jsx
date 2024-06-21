@@ -85,7 +85,7 @@ function Cart() {
           auth_token: token,
           delivery_needed: "false",
           amount_cents: grandTotal,
-          currency: "USD",
+          currency: "PKR",
           items: cartItems.map((item) => ({
             name: item.title,
             amount_cents: item.price,
@@ -111,7 +111,7 @@ function Cart() {
             phone_number: phoneNumber,
             email: JSON.parse(localStorage.getItem("user")).user.email,
           },
-          currency: "USD",
+          currency: "PKR",
           integration_id: import.meta.env.VITE_REACT_APP_PAYMOB_INTEGRATION_ID,
         }
       );
@@ -232,10 +232,22 @@ function Cart() {
               address={address}
               email={email}
               phoneNumber={phoneNumber}
+              street={street}
+              building={building}
+              floor={floor}
+              appartment={appartment}
+              city={city}
+              country={country}
               setName={setName}
               setAddress={setAddress}
               setEmail={setEmail}
               setPhoneNumber={setPhoneNumber}
+              setStreet={setStreet}
+              setBuilding={setBuilding}
+              setAppartment={setAppartment}
+              setFloor={setFloor}
+              setCity={setCity}
+              setCountry={setCountry}
               buyNow={buyNow}
             />
           </div>
