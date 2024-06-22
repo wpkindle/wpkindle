@@ -41,26 +41,9 @@ function Cart() {
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [street, setStreet] = useState("");
-  const [building, setBuilding] = useState("");
-  const [floor, setFloor] = useState("");
-  const [apartment, setApartment] = useState("");
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
 
   const buyNow = async () => {
-    if (
-      name === "" ||
-      address === "" ||
-      email === "" ||
-      phoneNumber === "" ||
-      street === "" ||
-      building === "" ||
-      floor === "" ||
-      apartment === "" ||
-      city === "" ||
-      country === ""
-    ) {
+    if (name === "" || address === "" || email === "" || phoneNumber === "") {
       return toast.error("All fields are required", {
         position: "top-center",
         autoClose: 1000,
@@ -102,7 +85,7 @@ function Cart() {
           auth_token: token,
           delivery_needed: "false",
           amount_cents: grandTotal,
-          currency: "USD",
+          currency: "PKR",
           items: cartItems.map((item) => ({
             name: item.title,
             amount_cents: item.price,
@@ -124,16 +107,11 @@ function Cart() {
           billing_data: {
             first_name: name,
             last_name: name,
-            street: street,
-            building: building,
-            floor: floor,
-            apartment: apartment,
-            city: city,
-            country: country,
+            address: address,
             phone_number: phoneNumber,
             email: JSON.parse(localStorage.getItem("user")).user.email,
           },
-          currency: "USD",
+          currency: "PKR",
           integration_id: import.meta.env.VITE_REACT_APP_PAYMOB_INTEGRATION_ID,
         }
       );
@@ -254,22 +232,10 @@ function Cart() {
               address={address}
               email={email}
               phoneNumber={phoneNumber}
-              street={street}
-              building={building}
-              floor={floor}
-              apartment={apartment}
-              city={city}
-              country={country}
               setName={setName}
               setAddress={setAddress}
               setEmail={setEmail}
               setPhoneNumber={setPhoneNumber}
-              setStreet={setStreet}
-              setBuilding={setBuilding}
-              setApartment={setApartment}
-              setFloor={setFloor}
-              setCity={setCity}
-              setCountry={setCountry}
               buyNow={buyNow}
             />
           </div>
