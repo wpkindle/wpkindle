@@ -85,7 +85,7 @@ function Cart() {
           auth_token: token,
           delivery_needed: "false",
           amount_cents: grandTotal,
-          currency: "PKR",
+          currency: "USD",
           items: cartItems.map((item) => ({
             name: item.title,
             amount_cents: item.price,
@@ -111,7 +111,7 @@ function Cart() {
             phone_number: phoneNumber,
             email: JSON.parse(localStorage.getItem("user")).user.email,
           },
-          currency: "PKR",
+          currency: "USD",
           integration_id: import.meta.env.VITE_REACT_APP_PAYMOB_INTEGRATION_ID,
         }
       );
