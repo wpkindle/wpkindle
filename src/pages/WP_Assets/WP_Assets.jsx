@@ -7,16 +7,7 @@ import { addToCart } from "../../redux/cartSlice";
 
 function WP_Assets() {
   const context = useContext(myContext);
-  const {
-    mode,
-    product,
-    searchkey,
-    setSearchkey,
-    filterType,
-    setFilterType,
-    filterPrice,
-    setFilterPrice,
-  } = context;
+  const { mode, product, searchkey, filterType, filterPrice } = context;
 
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
