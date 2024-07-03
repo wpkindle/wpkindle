@@ -37,7 +37,7 @@ export default async function OrdersPage({
               <TableHead>DATE</TableHead>
               <TableHead>TOTAL</TableHead>
               <TableHead>PAID</TableHead>
-              <TableHead>DELIVERED</TableHead>
+              <TableHead>LICENSE</TableHead>
               <TableHead>ACTIONS</TableHead>
             </TableRow>
           </TableHeader>
@@ -57,7 +57,7 @@ export default async function OrdersPage({
                 <TableCell>
                   {order.isDelivered && order.deliveredAt
                     ? formatDateTime(order.deliveredAt).dateTime
-                    : "not delivered"}
+                    : "OnSite Activation"}
                 </TableCell>
                 <TableCell>
                   <Link href={`/order/${order.id}`}>
