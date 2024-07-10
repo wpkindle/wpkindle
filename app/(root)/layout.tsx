@@ -12,7 +12,7 @@ export default function RootLayout({
   return (
     <div className="flex h-screen flex-col">
       <Header />
-      <main className="flex-1 wrapper mt-16">{children}</main>
+      {children}
       {modal}
       <Footer />
     </div>

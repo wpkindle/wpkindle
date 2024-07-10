@@ -32,40 +32,42 @@ const staticImages = [
 
 export default function ProductCarousel() {
   return (
-    <Carousel
-      className="w-full mt-16"
-      opts={{
-        loop: true,
-      }}
-      plugins={[
-        Autoplay({
-          delay: 2000,
-          stopOnInteraction: false,
-          stopOnMouseEnter: false,
-        }),
-      ]}
-    >
-      <CarouselContent>
-        {staticImages.map((image) => (
-          <CarouselItem key={image.id}>
-            <div className="relative mx-auto">
-              <Image
-                alt={image.altText}
-                src={image.imageUrl}
-                width="0"
-                height="0"
-                sizes="100vw"
-                className="w-full h-auto" // Add blur filter class
-              />
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <h2 className="bg-black border text-sm md:text-3xl font-bold p-2 text-white">
-                  {image.altText} {/* Use altText as title */}
-                </h2>
+    <>
+      <Carousel
+        className="w-full mt-16"
+        opts={{
+          loop: true,
+        }}
+        plugins={[
+          Autoplay({
+            delay: 2000,
+            stopOnInteraction: false,
+            stopOnMouseEnter: false,
+          }),
+        ]}
+      >
+        <CarouselContent>
+          {staticImages.map((image) => (
+            <CarouselItem key={image.id}>
+              <div className="relative mx-auto">
+                <Image
+                  alt={image.altText}
+                  src={image.imageUrl}
+                  width="0"
+                  height="0"
+                  sizes="100vw"
+                  className="w-full h-auto blur-[2px]" // Add blur filter class
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <h2 className="bg-black border text-sm md:text-3xl font-bold p-2 text-white">
+                    {image.altText} {/* Use altText as title */}
+                  </h2>
+                </div>
               </div>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-    </Carousel>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+    </>
   );
 }

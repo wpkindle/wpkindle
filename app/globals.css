@@ -84,4 +84,9 @@
       @apply font-bold text-xl lg:text-2xl;
     }
   }
+  .service-backgound {
+    background-image: url("/assets/images/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 }

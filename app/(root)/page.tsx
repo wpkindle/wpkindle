@@ -1,8 +1,10 @@
 import ScrollCarousel from "@/components/shared/ScrollCarousel";
+import ServicesTab from "@/components/shared/ServicesTab";
 import EcommerceFeatures from "@/components/shared/product/ecommerce-features";
 import ProductCarousel from "@/components/shared/product/product-carousel";
 import ProductList from "@/components/shared/product/product-list";
 import ProductPromotion from "@/components/shared/product/product-promotion";
+import Trust_Profiles from "@/components/shared/TrustProfiles";
 import { getLatestProducts } from "@/lib/actions/product.actions";
 
 export default async function Home() {
@@ -10,7 +12,9 @@ export default async function Home() {
   return (
     <>
       <ProductCarousel />
+      <Trust_Profiles />
       <ScrollCarousel />
+      <ServicesTab />
       <ProductList title="Newest Arrivals" data={latestProducts} />
       <ProductPromotion />
       <EcommerceFeatures />
