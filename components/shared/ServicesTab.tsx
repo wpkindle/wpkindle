@@ -6,13 +6,13 @@ export default function ServicesTab() {
   return (
     <div className="px-3 py-5 sm:py-10 service-backgound">
       <div className="container p-0 sm:p-4">
-        <div className="border rounded-lg">
+        <div className="border-r border-l border-b rounded-lg">
           <h1 className="text-2xl font-extrabold text-center text-gray-900 dark:text-white md:text-2xl lg:text-4xl bg-white rounded-t-lg p-3">
             <span className="text-transparent bg-clip-text bg-gradient-to-r to-green-600 from-blue-400">
               SERVICES
             </span>
           </h1>
-          <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-5 p-5 bg-opacity-50 bg-green-600">
+          <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-5 p-5 bg-opacity-75 bg-green-600 rounded-b-lg">
             <div className="border-r border-b border-l border-gray-400 lg:border-t lg:border-gray-400 bg-white rounded-lg flex flex-col justify-between leading-normal">
               <img
                 src="/assets/images/generatepress.webp"

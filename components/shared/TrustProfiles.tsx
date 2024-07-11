@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Trust_Profiles() {
   return (
-    <div className="flex justify-center gap-10 items-center bg-yellow-300">
+    <div className="flex justify-center gap-10 items-center p-4">
       <Link href={"https://www.trustpilot.com/review/wpkindle.com"}>
         <Image
           className="flex"
