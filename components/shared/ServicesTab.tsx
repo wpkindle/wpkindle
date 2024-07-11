@@ -76,7 +76,7 @@ export default function ServicesTab() {
                     WP Speed Optimization
                   </p>
                   <p className="text-gray-700 text-sm">
-                    Unleash Your Website's Speed with our WordPress Speed
+                    Unleash Your Website&apos;s Speed with our WordPress Speed
                     Optimization Service. Is your WordPress website sluggish,
                     leaving visitors frustrated and bouncing away? We can help!
                     Our WordPress Speed Optimization Service tackles speed
