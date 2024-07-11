@@ -1,4 +1,3 @@
-import ScrollCarousel from "@/components/shared/ScrollCarousel";
 import ServicesTab from "@/components/shared/ServicesTab";
 import EcommerceFeatures from "@/components/shared/product/ecommerce-features";
 import ProductCarousel from "@/components/shared/product/product-carousel";
@@ -13,7 +12,6 @@ export default async function Home() {
     <>
       <ProductCarousel />
       <Trust_Profiles />
-      <ScrollCarousel />
       <ServicesTab />
       <ProductList title="Newest Arrivals" data={latestProducts} />
       <ProductPromotion />

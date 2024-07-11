@@ -76,11 +76,12 @@ export default function ServicesTab() {
                     WP Speed Optimization
                   </p>
                   <p className="text-gray-700 text-sm">
-                    We help you craft a Custom WordPress Themes tailored to your
-                    vision from the ground up, focusing on speed, stability,
-                    security, and accessibility. Our development process ensures
-                    you get a website that not only looks amazing but performs
-                    flawlessly.
+                    Unleash Your Website's Speed with our WordPress Speed
+                    Optimization Service. Is your WordPress website sluggish,
+                    leaving visitors frustrated and bouncing away? We can help!
+                    Our WordPress Speed Optimization Service tackles speed
+                    issues head-on, delivering a website that loads lightning
+                    fast.
                   </p>
                 </div>
                 <div className="flex items-center">
