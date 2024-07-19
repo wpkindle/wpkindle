@@ -8,14 +8,14 @@ export default function ServicesTab() {
     <div className="px-3 py-4 sm:py-8 services-backgound">
       <div className="container p-0 sm:p-4">
         <div className="rounded-lg">
-          <h1 className="py-1 w-max text-2xl font-extrabold text-center text-gray-900 dark:text-white md:text-2xl lg:text-4xl bg-white rounded-t-lg border-b border-gray-300">
-            <MonitorCog />
-            <span className="rounded-3xl px-5 border-green-600 text-transparent bg-clip-text bg-gradient-to-r to-green-600 from-blue-400">
+          <h1 className="flex gap-2 items-center px-3 py-1 w-max text-2xl font-extrabold text-center text-gray-900 dark:text-white lg:text-3xl bg-white rounded-t-lg border-b border-gray-300">
+            <MonitorCog className="text-green-600" />
+            <span className="rounded-3xl border-green-600 text-transparent bg-clip-text bg-gradient-to-r to-green-600 from-blue-400">
               SERVICES
             </span>
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-5 p-5 bg-white rounded-lg rounded-tl-none">
-            <div className="shadow-2xl bg-white rounded-lg flex flex-col justify-between">
+            <div className="shadow-2xl border border-gray-400 bg-white rounded-lg flex flex-col justify-between">
               <img
                 src="/assets/images/generatepress.webp"
                 className="w-full mb-3 rounded-t-lg border-b border-gray-400"
