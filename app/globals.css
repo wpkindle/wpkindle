@@ -84,9 +84,19 @@
       @apply font-bold text-xl lg:text-2xl;
     }
   }
-  .service-backgound {
-    background-image: url("/assets/images/background.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
+  .services-backgound {
+    background: gray url(https://image.ibb.co/ky3Y0S/teee.png) repeat 0 0;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    animation: slide 30s linear infinite;
+  }
+  @keyframes slide {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -512px -512px;
+    }
   }
 }

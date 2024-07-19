@@ -1,9 +1,15 @@
+import Image from "next/image";
+
 const Loading = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen ">
-      <div className="p-6 rounded-lg shadow-md w-1/3 text-center">
-        Loading...
-      </div>
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <Image
+        src={"/assets/images/loader.gif"}
+        alt="loader"
+        width={50}
+        height={50}
+      />
+      <div className="text-green-600">LOADING</div>
     </div>
   );
 };

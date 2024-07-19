@@ -1,22 +1,24 @@
 import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { MonitorCog } from "lucide-react";
 
 export default function ServicesTab() {
   return (
-    <div className="px-3 py-5 sm:py-10 service-backgound">
+    <div className="px-3 py-4 sm:py-8 services-backgound">
       <div className="container p-0 sm:p-4">
-        <div className="border-r border-l border-b rounded-lg">
-          <h1 className="text-2xl font-extrabold text-center text-gray-900 dark:text-white md:text-2xl lg:text-4xl bg-white rounded-t-lg p-3">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r to-green-600 from-blue-400">
+        <div className="rounded-lg">
+          <h1 className="py-1 w-max text-2xl font-extrabold text-center text-gray-900 dark:text-white md:text-2xl lg:text-4xl bg-white rounded-t-lg border-b border-gray-300">
+            <MonitorCog />
+            <span className="rounded-3xl px-5 border-green-600 text-transparent bg-clip-text bg-gradient-to-r to-green-600 from-blue-400">
               SERVICES
             </span>
           </h1>
-          <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-5 p-5 bg-opacity-75 bg-green-600 rounded-b-lg">
-            <div className="border-r border-b border-l border-gray-400 lg:border-t lg:border-gray-400 bg-white rounded-lg flex flex-col justify-between leading-normal">
+          <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-5 p-5 bg-white rounded-lg rounded-tl-none">
+            <div className="shadow-2xl bg-white rounded-lg flex flex-col justify-between">
               <img
                 src="/assets/images/generatepress.webp"
-                className="w-full mb-3 rounded-t-lg border-b"
+                className="w-full mb-3 rounded-t-lg border-b border-gray-400"
               />
               <div className="p-4 pt-2">
                 <div className="mb-8">
@@ -39,7 +41,7 @@ export default function ServicesTab() {
               </div>
             </div>
 
-            <div className="border-r border-b border-l border-gray-400 lg:border-t lg:border-gray-400 bg-white rounded-lg flex flex-col justify-between leading-normal">
+            <div className="shadow-2xl border border-gray-400 bg-white rounded-lg flex flex-col justify-between">
               <img
                 src="/assets/images/wp-theme-customization.webp"
                 className="w-full mb-3 rounded-t-lg border-b"
@@ -65,7 +67,7 @@ export default function ServicesTab() {
               </div>
             </div>
 
-            <div className="border-r border-b border-l border-gray-400 lg:border-t lg:border-gray-400 bg-white rounded-lg flex flex-col justify-between leading-normal">
+            <div className="shadow-2xl border border-gray-400 bg-white rounded-lg flex flex-col justify-between">
               <img
                 src="/assets/images/speed-optimization.png"
                 className="w-full mb-3 rounded-t-lg border-b bg-black"
