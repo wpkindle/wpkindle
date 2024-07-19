@@ -10,8 +10,8 @@ import Image from "next/image";
 const staticImages = [
   {
     id: 1, // Optional id for reference
-    imageUrl: "/assets/images/health-blog.png",
-    altText: "HEALTH BLOG",
+    imageUrl: "/assets/images/health-website.jpg",
+    altText: "HEALTH WEBSITE",
   },
   {
     id: 2,
@@ -40,7 +40,7 @@ export default function ProductCarousel() {
         }}
         plugins={[
           Autoplay({
-            delay: 2000,
+            delay: 3000,
             stopOnInteraction: false,
             stopOnMouseEnter: false,
           }),
@@ -53,16 +53,15 @@ export default function ProductCarousel() {
                 <Image
                   alt={image.altText}
                   src={image.imageUrl}
-                  width="0"
-                  height="0"
-                  sizes="100vw"
-                  className="w-full h-auto blur-[2px]" // Add blur filter class
+                  width="2000"
+                  height="2000"
+                  className="w-full h-auto" // Add blur filter class
                 />
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <h2 className="bg-black border text-sm md:text-3xl font-bold p-2 text-white">
-                    {image.altText} {/* Use altText as title */}
+                {/* <div className="absolute inset-0 flex flex-col items-center justify-center">
+                   <h2 className="bg-black border text-sm md:text-3xl font-bold p-2 text-white">
+                     {image.altText} Use altText as title
                   </h2>
-                </div>
+                </div> */}
               </div>
             </CarouselItem>
           ))}
