@@ -13,7 +13,7 @@ export default async function Home() {
       <ProductCarousel />
       <Trust_Profiles />
       <ServicesTab />
-      <ProductList title="Newest Arrivals" data={latestProducts} />
+      <ProductList title="WP Assets" data={latestProducts} />
       <ProductPromotion />
       <EcommerceFeatures />
     </>
