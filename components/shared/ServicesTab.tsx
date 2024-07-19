@@ -15,7 +15,7 @@ export default function ServicesTab() {
             </span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-5 p-5 bg-white rounded-lg rounded-tl-none">
-            <div className="shadow-2xl border border-gray-400 bg-white rounded-lg flex flex-col justify-between">
+            <div className="shadow-2xl hover:shadow-none border border-gray-400 bg-white rounded-lg flex flex-col justify-between">
               <img
                 src="/assets/images/generatepress.webp"
                 className="w-full mb-3 rounded-t-lg border-b border-gray-400"
@@ -41,7 +41,7 @@ export default function ServicesTab() {
               </div>
             </div>
 
-            <div className="shadow-2xl border border-gray-400 bg-white rounded-lg flex flex-col justify-between">
+            <div className="shadow-2xl hover:shadow-none border border-gray-400 bg-white rounded-lg flex flex-col justify-between">
               <img
                 src="/assets/images/wp-theme-customization.webp"
                 className="w-full mb-3 rounded-t-lg border-b"
@@ -67,7 +67,7 @@ export default function ServicesTab() {
               </div>
             </div>
 
-            <div className="shadow-2xl border border-gray-400 bg-white rounded-lg flex flex-col justify-between">
+            <div className="shadow-2xl hover:shadow-none border border-gray-400 bg-white rounded-lg flex flex-col justify-between">
               <img
                 src="/assets/images/speed-optimization.png"
                 className="w-full mb-3 rounded-t-lg border-b bg-black"

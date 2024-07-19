@@ -5,7 +5,7 @@ const ProductList = ({ title, data }: { title: string; data: Product[] }) => {
   return (
     <div className="px-3 py-4">
       <div className="container sm:p-3 p-0">
-        <h2 className="flex gap-2 items-center px-3 py-1 w-max text-2xl font-extrabold text-center text-gray-900 dark:text-white lg:text-3xl bg-white rounded-t-lg border-b border-gray-300">
+        <h2 className="flex gap-2 items-center px-3 py-1 w-max text-2xl font-extrabold text-center text-gray-900 dark:text-white lg:text-3xl rounded-t-lg border-r border-l border-t border-gray-300">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
@@ -38,9 +38,8 @@ const ProductList = ({ title, data }: { title: string; data: Product[] }) => {
             {title}
           </span>
         </h2>
-
         {data.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="p-4 rounded-lg rounded-tl-none border border-gray-300 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {data.map((product: Product) => (
               <ProductCard key={product.slug} product={product} />
             ))}
