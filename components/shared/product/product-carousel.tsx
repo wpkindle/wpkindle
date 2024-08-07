@@ -15,7 +15,7 @@ const staticImages = [
   },
   {
     id: 2,
-    imageUrl: "/assets/images/service-website.png",
+    imageUrl: "/assets/images/service-website-1.jpg",
     altText: "SERVICE WEBSITE",
   },
   {
